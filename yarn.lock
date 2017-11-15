@@ -1279,7 +1279,7 @@ babel-runtime@^6.0.0, babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.25.0, babel-template@^6.26.0, babel-template@^6.3.0, babel-template@^6.7.0:
+babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.25.0, babel-template@^6.26.0, babel-template@^6.3.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-template/-/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
   dependencies:
@@ -9488,11 +9488,10 @@ react-group@^1.0.5:
   dependencies:
     prop-types "^15.5.10"
 
-react-hot-loader@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.0.0.tgz#6e28da9d459da8085f5ee8bdd775046ba4b5cd0b"
+react-hot-loader@3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.1.3.tgz#6f92877326958c7cb0134b512474517869126082"
   dependencies:
-    babel-template "^6.7.0"
     global "^4.3.0"
     react-deep-force-update "^2.1.1"
     react-proxy "^3.0.0-alpha.0"
