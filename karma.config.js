@@ -94,14 +94,14 @@ module.exports = (config) => {
 
     if (IS_MOBILE) {
         cfg.customLaunchers = {
-            sauceChromeAndroid: {
-                base: 'SauceLabs',
-                browserName: 'Chrome',
-                deviceName: 'Android Emulator',
-                platformName: 'Android',
-                platformVersion: '6.0',
-                timeZone: 'Moscow'
-            },
+            // sauceChromeAndroid: {
+            //     base: 'SauceLabs',
+            //     browserName: 'Chrome',
+            //     deviceName: 'Android Emulator',
+            //     platformName: 'Android',
+            //     platformVersion: '6.0',
+            //     timeZone: 'Moscow'
+            // },
             sauceSafariIOS: {
                 base: 'SauceLabs',
                 browserName: 'iPhone',

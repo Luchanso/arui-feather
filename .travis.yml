@@ -7,10 +7,7 @@ node_js:
 
 env:
   matrix:
-    - TEST_SCOPE: lint
-    - TEST_SCOPE: desktop_unit
     - TEST_SCOPE: mobile_unit
-    - TEST_SCOPE: gemini
 
 matrix:
   fast_finish: true
