@@ -11,7 +11,7 @@ describe('icon', () => {
 
     it('renders without problems', () => {
         let icon = render(<Icon />);
-        expect(icon.node).to.have.exist;
+        expect(icon.node).to.exist;
     });
 
     (() => {

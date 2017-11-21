@@ -11,6 +11,6 @@ describe('flag-icon', () => {
 
     it('renders without problems', () => {
         let flagIcon = render(<FlagIcon />);
-        expect(flagIcon.node).to.have.exist;
+        expect(flagIcon.node).to.exist;
     });
 });
