@@ -12,7 +12,7 @@ import Select from '../select/select';
 import cn from '../cn';
 import performance from '../performance';
 
-import countries from '../lib/countries';
+// import countries from '../lib/countries';
 // import getRelatedTarget from '../lib/related-target';
 
 const MAX_DIAL_CODE_LENGTH = 4;
@@ -177,23 +177,24 @@ class IntlPhoneInput extends React.Component {
 
     @autobind
     getOptions(cn) {
-        this.countries = countries.getCountries();
-
-        return this.countries.map(country => ({
-            value: country.iso2,
-            text: (
-                <span>
-                    { country.name }
-                    <span className={ cn('select-option-code') }>+{ country.dialCode }</span>
-                </span>
-            ),
-            nativeText: `${country.name} +${country.dialCode}`,
-            icon: (
-                <span className={ cn('select-option-flag') }>
-                    { this.renderFlagIcon(country.iso2) }
-                </span>
-            )
-        }));
+        return [];
+        // this.countries = countries.getCountries();
+        //
+        // return this.countries.map(country => ({
+        //     value: country.iso2,
+        //     text: (
+        //         <span>
+        //             { country.name }
+        //             <span className={ cn('select-option-code') }>+{ country.dialCode }</span>
+        //         </span>
+        //     ),
+        //     nativeText: `${country.name} +${country.dialCode}`,
+        //     icon: (
+        //         <span className={ cn('select-option-flag') }>
+        //             { this.renderFlagIcon(country.iso2) }
+        //         </span>
+        //     )
+        // }));
     }
 
     getSelectPopupOffset() {
