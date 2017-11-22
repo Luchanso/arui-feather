@@ -36,95 +36,95 @@ describe('intl-phone-input', () => {
     //     });
     // });
 
-    it('should return `HTMLInputElement` when `getControl` method called', () => {
-        let elem = render(<IntlPhoneInput />);
-        let controlNode = elem.instance.getControl();
-
-        expect(controlNode).to.be.instanceOf(HTMLInputElement);
-    });
-
-    it('should call `onFocus` callback on public `focus` method call', (done) => {
-        let onFocus = sinon.spy();
-        let elem = render(<IntlPhoneInput onFocus={ onFocus } />);
-
-        elem.instance.focus();
-
-        setTimeout(() => {
-            expect(onFocus).to.have.been.calledOnce;
-            done();
-        }, 0);
-    });
-
-    it('should call `onBlur` on public `blur` method call', (done) => {
-        let onBlur = sinon.spy();
-        let elem = render(<IntlPhoneInput onBlur={ onBlur } />);
-
-        elem.instance.focus();
-
-        setTimeout(() => {
-            elem.instance.blur();
-            expect(onBlur).to.have.been.calledOnce;
-            done();
-        }, 0);
-    });
-
-    it('should scroll window to element on public `scrollTo` method', (done) => {
-        let elem = render(<IntlPhoneInput />);
-        let elemTopPosition = elem.instance.input.getNode().getBoundingClientRect().top;
-        let elemScrollTo = (elemTopPosition + window.pageYOffset) - SCROLL_TO_CORRECTION;
-
-        elem.instance.scrollTo();
-
-        setTimeout(() => {
-            expect(window.scrollTo).to.have.been.calledWith(0, elemScrollTo);
-            done();
-        }, 0);
-    });
-
-    it('should call `onChange` callback after input was changed with dial code of country without priority', () => {
-        let onChange = sinon.spy();
-        let elem = render(<IntlPhoneInput onChange={ onChange } />);
-        let controlNode = elem.instance.getControl();
-
-        simulate(controlNode, 'change', { target: { value: '+54' } });
-
-        expect(onChange).to.have.been.calledOnce;
-        expect(onChange).to.have.been.calledWith('+54');
-    });
-
-    it('should call `onChange` callback after input was changed with dial code of country from NANP', () => {
-        let onChange = sinon.spy();
-        let elem = render(<IntlPhoneInput onChange={ onChange } />);
-        let controlNode = elem.instance.getControl();
-
-        simulate(controlNode, 'change', { target: { value: '+1868' } });
-
-        expect(onChange).to.have.been.calledOnce;
-        expect(onChange).to.have.been.calledWith('+1868');
-    });
-
-    it('should call `onChange` callback after input was changed with whole russian number', () => {
-        let onChange = sinon.spy();
-        let elem = render(<IntlPhoneInput onChange={ onChange } />);
-        let controlNode = elem.instance.getControl();
-
-        simulate(controlNode, 'change', { target: { value: '+74957888878' } });
-
-        expect(onChange).to.have.been.calledOnce;
-        expect(onChange).to.have.been.calledWith('+74957888878');
-    });
-
-    it('should have default country flag icon', () => {
-        let elem = render(<IntlPhoneInput />);
-
-        expect(elem.node.querySelector('.flag-icon')).to.have.class('flag-icon_country_ru');
-    });
-
-    it('should set new country flag icon from props', () => {
-        let elem = render(<IntlPhoneInput value='+61' />);
-
-        expect(elem.node.querySelector('.flag-icon')).to.have.class('flag-icon_country_au');
-    });
+    // it('should return `HTMLInputElement` when `getControl` method called', () => {
+    //     let elem = render(<IntlPhoneInput />);
+    //     let controlNode = elem.instance.getControl();
+    //
+    //     expect(controlNode).to.be.instanceOf(HTMLInputElement);
+    // });
+    //
+    // it('should call `onFocus` callback on public `focus` method call', (done) => {
+    //     let onFocus = sinon.spy();
+    //     let elem = render(<IntlPhoneInput onFocus={ onFocus } />);
+    //
+    //     elem.instance.focus();
+    //
+    //     setTimeout(() => {
+    //         expect(onFocus).to.have.been.calledOnce;
+    //         done();
+    //     }, 0);
+    // });
+    //
+    // it('should call `onBlur` on public `blur` method call', (done) => {
+    //     let onBlur = sinon.spy();
+    //     let elem = render(<IntlPhoneInput onBlur={ onBlur } />);
+    //
+    //     elem.instance.focus();
+    //
+    //     setTimeout(() => {
+    //         elem.instance.blur();
+    //         expect(onBlur).to.have.been.calledOnce;
+    //         done();
+    //     }, 0);
+    // });
+    //
+    // it('should scroll window to element on public `scrollTo` method', (done) => {
+    //     let elem = render(<IntlPhoneInput />);
+    //     let elemTopPosition = elem.instance.input.getNode().getBoundingClientRect().top;
+    //     let elemScrollTo = (elemTopPosition + window.pageYOffset) - SCROLL_TO_CORRECTION;
+    //
+    //     elem.instance.scrollTo();
+    //
+    //     setTimeout(() => {
+    //         expect(window.scrollTo).to.have.been.calledWith(0, elemScrollTo);
+    //         done();
+    //     }, 0);
+    // });
+    //
+    // it('should call `onChange` callback after input was changed with dial code of country without priority', () => {
+    //     let onChange = sinon.spy();
+    //     let elem = render(<IntlPhoneInput onChange={ onChange } />);
+    //     let controlNode = elem.instance.getControl();
+    //
+    //     simulate(controlNode, 'change', { target: { value: '+54' } });
+    //
+    //     expect(onChange).to.have.been.calledOnce;
+    //     expect(onChange).to.have.been.calledWith('+54');
+    // });
+    //
+    // it('should call `onChange` callback after input was changed with dial code of country from NANP', () => {
+    //     let onChange = sinon.spy();
+    //     let elem = render(<IntlPhoneInput onChange={ onChange } />);
+    //     let controlNode = elem.instance.getControl();
+    //
+    //     simulate(controlNode, 'change', { target: { value: '+1868' } });
+    //
+    //     expect(onChange).to.have.been.calledOnce;
+    //     expect(onChange).to.have.been.calledWith('+1868');
+    // });
+    //
+    // it('should call `onChange` callback after input was changed with whole russian number', () => {
+    //     let onChange = sinon.spy();
+    //     let elem = render(<IntlPhoneInput onChange={ onChange } />);
+    //     let controlNode = elem.instance.getControl();
+    //
+    //     simulate(controlNode, 'change', { target: { value: '+74957888878' } });
+    //
+    //     expect(onChange).to.have.been.calledOnce;
+    //     expect(onChange).to.have.been.calledWith('+74957888878');
+    // });
+    //
+    // it('should have default country flag icon', () => {
+    //     let elem = render(<IntlPhoneInput />);
+    //
+    //     expect(elem.node.querySelector('.flag-icon')).to.have.class('flag-icon_country_ru');
+    // });
+    //
+    // it('should set new country flag icon from props', () => {
+    //     let elem = render(<IntlPhoneInput value='+61' />);
+    //
+    //     expect(elem.node.querySelector('.flag-icon')).to.have.class('flag-icon_country_au');
+    // });
 
     // if (!bowser.mobile) {
     //     it('should call `onChange` callback after select was changed', () => {
