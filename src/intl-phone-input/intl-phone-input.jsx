@@ -13,7 +13,7 @@ import cn from '../cn';
 import performance from '../performance';
 
 import countries from '../lib/countries';
-import getRelatedTarget from '../lib/related-target';
+// import getRelatedTarget from '../lib/related-target';
 
 const MAX_DIAL_CODE_LENGTH = 4;
 
@@ -220,51 +220,51 @@ class IntlPhoneInput extends React.Component {
     }
 
     resolveFocusedState(nextFocusedStateItem, event) {
-        let focusedState = {
-            inputFocused: this.state.inputFocused,
-            selectFocused: this.state.selectFocused
-        };
-
-        let relatedTarget = getRelatedTarget(event);
-        let hasMatchedRelatedTarget = relatedTarget === event.target;
-        let hasSelectRelatedTarget = false;
-
-        // Check classNames matching in select's button (relatedTarget) & menu (focused target)
-        if (relatedTarget.classList && event.target.classList) {
-            hasSelectRelatedTarget = Array.from(relatedTarget.classList).some(item => /select/.test(item)) ===
-                Array.from(event.target.classList).some(item => /select/.test(item));
-        }
-
-        if (event.type === 'focus') {
-            if (hasMatchedRelatedTarget || hasSelectRelatedTarget) {
-                // If we have smth already focused, do not do anything
-                let alreadyInFocus = Object.values(focusedState).some(item => item);
-
-                if (!alreadyInFocus) {
-                    this.setState(nextFocusedStateItem);
-
-                    if (this.props.onFocus) {
-                        this.props.onFocus(event);
-                    }
-                }
-            }
-        }
-
-        if (event.type === 'blur') {
-            if (relatedTarget === document.body) {
-                // Set all values in focusedState to false cause we are blurring now
-                this.setState(
-                    Object.keys(focusedState).reduce((result, item) => {
-                        result[item] = false;
-                        return result;
-                    }, {})
-                );
-
-                if (this.props.onBlur) {
-                    this.props.onBlur(event);
-                }
-            }
-        }
+        // let focusedState = {
+        //     inputFocused: this.state.inputFocused,
+        //     selectFocused: this.state.selectFocused
+        // };
+        //
+        // let relatedTarget = getRelatedTarget(event);
+        // let hasMatchedRelatedTarget = relatedTarget === event.target;
+        // let hasSelectRelatedTarget = false;
+        //
+        // // Check classNames matching in select's button (relatedTarget) & menu (focused target)
+        // if (relatedTarget.classList && event.target.classList) {
+        //     hasSelectRelatedTarget = Array.from(relatedTarget.classList).some(item => /select/.test(item)) ===
+        //         Array.from(event.target.classList).some(item => /select/.test(item));
+        // }
+        //
+        // if (event.type === 'focus') {
+        //     if (hasMatchedRelatedTarget || hasSelectRelatedTarget) {
+        //         // If we have smth already focused, do not do anything
+        //         let alreadyInFocus = Object.values(focusedState).some(item => item);
+        //
+        //         if (!alreadyInFocus) {
+        //             this.setState(nextFocusedStateItem);
+        //
+        //             if (this.props.onFocus) {
+        //                 this.props.onFocus(event);
+        //             }
+        //         }
+        //     }
+        // }
+        //
+        // if (event.type === 'blur') {
+        //     if (relatedTarget === document.body) {
+        //         // Set all values in focusedState to false cause we are blurring now
+        //         this.setState(
+        //             Object.keys(focusedState).reduce((result, item) => {
+        //                 result[item] = false;
+        //                 return result;
+        //             }, {})
+        //         );
+        //
+        //         if (this.props.onBlur) {
+        //             this.props.onBlur(event);
+        //         }
+        //     }
+        // }
     }
 
     setCountry() {
@@ -303,43 +303,43 @@ class IntlPhoneInput extends React.Component {
             countryIso2
         });
     }
-
-    /**
-     * Возвращает ссылку на HTMLElement инпута.
-     *
-     * @public
-     * @returns {HTMLInputElement}
-     */
-    getControl() {
-        return this.input.getControl();
-    }
-
-    /**
-     * Устанавливает фокус на поле ввода.
-     *
-     * @public
-     */
-    focus() {
-        this.input.focus();
-    }
-
-    /**
-     * Убирает фокус с поля ввода.
-     *
-     * @public
-     */
-    blur() {
-        this.input.blur();
-    }
-
-    /**
-     * Скроллит страницу до поля ввода.
-     *
-     * @public
-     */
-    scrollTo() {
-        this.input.scrollTo();
-    }
+    //
+    // /**
+    //  * Возвращает ссылку на HTMLElement инпута.
+    //  *
+    //  * @public
+    //  * @returns {HTMLInputElement}
+    //  */
+    // getControl() {
+    //     return this.input.getControl();
+    // }
+    //
+    // /**
+    //  * Устанавливает фокус на поле ввода.
+    //  *
+    //  * @public
+    //  */
+    // focus() {
+    //     this.input.focus();
+    // }
+    //
+    // /**
+    //  * Убирает фокус с поля ввода.
+    //  *
+    //  * @public
+    //  */
+    // blur() {
+    //     this.input.blur();
+    // }
+    //
+    // /**
+    //  * Скроллит страницу до поля ввода.
+    //  *
+    //  * @public
+    //  */
+    // scrollTo() {
+    //     this.input.scrollTo();
+    // }
 }
 
 export default IntlPhoneInput;
