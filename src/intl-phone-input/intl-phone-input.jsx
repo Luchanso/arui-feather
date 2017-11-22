@@ -17,38 +17,13 @@ import performance from '../performance';
 @cn('intl-phone-input')
 @performance()
 class IntlPhoneInput extends React.Component {
-    static defaultProps = {
-        size: 'm',
-        value: '+7'
-    };
-
-    state = {
-        countryIso2: 'ru',
-        inputFocused: false,
-        selectFocused: false,
-        onceOpened: false
-    }
-
-    input;
-    select;
     util;
 
     render(cn) {
-        const options = [
-            { value: '01', text: 'ИП Фридман М.М.' },
-            { value: '02', text: 'ООО «Виктори»' },
-            { value: '03', text: 'ФГУП НПП ВНИИЭМ' }
-        ];
-
         return (
             <div className={ cn() }>
-                <Input
-                    className={ cn('input') }
-                />
-                <Select
-                    className={ cn('select') }
-                    options={ options }
-                />
+                <Input />
+                <Select />
             </div>
         );
     }
