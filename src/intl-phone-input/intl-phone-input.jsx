@@ -5,15 +5,11 @@
 import { autobind } from 'core-decorators';
 import React from 'react';
 
-// import FlagIcon from '../flag-icon/flag-icon';
 import Input from '../input/input';
 import Select from '../select/select';
 
 import cn from '../cn';
 import performance from '../performance';
-
-// import countries from '../lib/countries';
-// import getRelatedTarget from '../lib/related-target';
 
 const MAX_DIAL_CODE_LENGTH = 4;
 
@@ -47,25 +43,6 @@ class IntlPhoneInput extends React.Component {
     timeoutId;
     util;
 
-    // componentDidMount() {
-    //     this.loadUtil();
-    //     this.setCountry();
-    // }
-    //
-    // componentWillUpdate(nextProps, nextState) {
-    //     if (this.state.inputValue !== nextState.inputValue) {
-    //         if (this.props.onChange) {
-    //             this.props.onChange(nextState.inputValue);
-    //         }
-    //     }
-    // }
-    //
-    // componentWillUnmount() {
-    //     if (this.timeoutId) {
-    //         clearTimeout(this.timeoutId);
-    //     }
-    // }
-
     render(cn, Input, Select) {
         return (
             <div className={ cn() }>
@@ -82,72 +59,17 @@ class IntlPhoneInput extends React.Component {
                             mode='radio'
                             options={ this.getOptions(cn) }
                             popupSecondaryOffset={ this.getSelectPopupOffset() }
-                            renderButtonContent={ this.renderSelectButtonContent }
                             size={ this.props.size }
-                            value={ [this.state.countryIso2] }
-                            onBlur={ this.handleSelectBlur }
-                            onChange={ this.handleSelectChange }
                             onClick={ this.handleSelectClick }
-                            onFocus={ this.handleSelectFocus }
                         />
                     }
                     noValidate={ true }
                     type='tel'
                     value={ this.getValue() }
-                    onBlur={ this.handleInputBlur }
                     onChange={ this.handleInputChange }
-                    onFocus={ this.handleInputFocus }
                 />
             </div>
         );
-    }
-
-    // renderFlagIcon(countryIso2) {
-    //     return (
-    //         <FlagIcon
-    //             country={ countryIso2 }
-    //             mode={ this.state.onceOpened ? 'sprite' : 'chunk' }
-    //             size={ this.props.size }
-    //         />
-    //     );
-    // }
-
-    @autobind
-    renderSelectButtonContent() {
-        return 'foo';
-        // return this.renderFlagIcon(this.state.countryIso2);
-    }
-
-    @autobind
-    handleSelectFocus(event) {
-        if (!this.state.onceOpened) {
-            this.setState({
-                onceOpened: true
-            });
-        }
-
-        this.resolveFocusedState({ selectFocused: true }, event);
-    }
-
-    @autobind
-    handleSelectBlur(event) {
-        this.resolveFocusedState({ selectFocused: false }, event);
-    }
-
-    @autobind
-    handleSelectChange(value) {
-        // let inputValue = `+${this.countries.find(country => country.iso2 === value[0]).dialCode}`;
-        //
-        // this.setState({
-        //     countryIso2: value[0],
-        //     inputValue
-        // }, () => {
-        //     // Wait for select blur, then focus on input
-        //     this.timeoutId = setTimeout(() => {
-        //         this.input.focus();
-        //         this.input.setSelectionRange(inputValue.length);
-        //     }, 0);
-        // });
     }
 
     @autobind
@@ -160,16 +82,6 @@ class IntlPhoneInput extends React.Component {
     }
 
     @autobind
-    handleInputFocus(event) {
-        this.resolveFocusedState({ inputFocused: true }, event);
-    }
-
-    @autobind
-    handleInputBlur(event) {
-        this.resolveFocusedState({ inputFocused: false }, event);
-    }
-
-    @autobind
     handleInputChange(value) {
         this.setState({
             inputValue: value.length === 1 && value !== '+' ? `+${value}` : value
@@ -179,23 +91,6 @@ class IntlPhoneInput extends React.Component {
     @autobind
     getOptions(cn) {
         return [];
-        // this.countries = countries.getCountries();
-        //
-        // return this.countries.map(country => ({
-        //     value: country.iso2,
-        //     text: (
-        //         <span>
-        //             { country.name }
-        //             <span className={ cn('select-option-code') }>+{ country.dialCode }</span>
-        //         </span>
-        //     ),
-        //     nativeText: `${country.name} +${country.dialCode}`,
-        //     icon: (
-        //         <span className={ cn('select-option-flag') }>
-        //             { this.renderFlagIcon(country.iso2) }
-        //         </span>
-        //     )
-        // }));
     }
 
     getSelectPopupOffset() {
@@ -219,54 +114,6 @@ class IntlPhoneInput extends React.Component {
         return import(/* webpackChunkName: "libphonenumber" */ 'libphonenumber-js/bundle/libphonenumber-js.min')
             .then((util) => { this.util = util; })
             .catch(error => `An error occurred while loading libphonenumber-js:\n${error}`);
-    }
-
-    resolveFocusedState(nextFocusedStateItem, event) {
-        // let focusedState = {
-        //     inputFocused: this.state.inputFocused,
-        //     selectFocused: this.state.selectFocused
-        // };
-        //
-        // let relatedTarget = getRelatedTarget(event);
-        // let hasMatchedRelatedTarget = relatedTarget === event.target;
-        // let hasSelectRelatedTarget = false;
-        //
-        // // Check classNames matching in select's button (relatedTarget) & menu (focused target)
-        // if (relatedTarget.classList && event.target.classList) {
-        //     hasSelectRelatedTarget = Array.from(relatedTarget.classList).some(item => /select/.test(item)) ===
-        //         Array.from(event.target.classList).some(item => /select/.test(item));
-        // }
-        //
-        // if (event.type === 'focus') {
-        //     if (hasMatchedRelatedTarget || hasSelectRelatedTarget) {
-        //         // If we have smth already focused, do not do anything
-        //         let alreadyInFocus = Object.values(focusedState).some(item => item);
-        //
-        //         if (!alreadyInFocus) {
-        //             this.setState(nextFocusedStateItem);
-        //
-        //             if (this.props.onFocus) {
-        //                 this.props.onFocus(event);
-        //             }
-        //         }
-        //     }
-        // }
-        //
-        // if (event.type === 'blur') {
-        //     if (relatedTarget === document.body) {
-        //         // Set all values in focusedState to false cause we are blurring now
-        //         this.setState(
-        //             Object.keys(focusedState).reduce((result, item) => {
-        //                 result[item] = false;
-        //                 return result;
-        //             }, {})
-        //         );
-        //
-        //         if (this.props.onBlur) {
-        //             this.props.onBlur(event);
-        //         }
-        //     }
-        // }
     }
 
     setCountry() {
