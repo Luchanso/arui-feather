@@ -48,7 +48,7 @@ class IntlPhoneInput extends React.Component {
     util;
 
     componentDidMount() {
-        this.loadUtil();
+        // this.loadUtil();
         this.setCountry();
     }
 
