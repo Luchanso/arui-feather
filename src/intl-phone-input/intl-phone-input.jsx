@@ -5,7 +5,6 @@
 import React from 'react';
 
 import Input from '../input/input';
-import Select from '../select/select';
 
 import cn from '../cn';
 import performance from '../performance';
@@ -40,13 +39,6 @@ class IntlPhoneInput extends React.Component {
                     className={ cn('input') }
                     ref={ (input) => { this.input = input; } }
                     focused={ this.state.inputFocused || this.state.selectFocused }
-                    leftAddons={
-                        <Select
-                            className={ cn('select') }
-                            ref={ (select) => { this.select = select; } }
-                            mode='radio'
-                        />
-                    }
                     noValidate={ true }
                     type='tel'
                 />
