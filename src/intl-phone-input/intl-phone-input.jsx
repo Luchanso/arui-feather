@@ -66,7 +66,6 @@ class IntlPhoneInput extends React.Component {
                     noValidate={ true }
                     type='tel'
                     value={ this.getValue() }
-                    onChange={ this.handleInputChange }
                 />
             </div>
         );
@@ -79,13 +78,6 @@ class IntlPhoneInput extends React.Component {
             this.input.focus();
             this.input.setSelectionRange(-1);
         }
-    }
-
-    @autobind
-    handleInputChange(value) {
-        this.setState({
-            inputValue: value.length === 1 && value !== '+' ? `+${value}` : value
-        }, this.setCountry);
     }
 
     @autobind
@@ -115,80 +107,6 @@ class IntlPhoneInput extends React.Component {
             .then((util) => { this.util = util; })
             .catch(error => `An error occurred while loading libphonenumber-js:\n${error}`);
     }
-
-    setCountry() {
-        let inputValue = this.getValue().replace(/ /g, '');
-
-        this.countries.forEach((country) => {
-            if (new RegExp(`^\\+${country.dialCode}`).test(inputValue)) {
-                // Handle countries with priority field
-                if (country.priority !== undefined) {
-                    // Check max dial code length to allow country change
-                    // For countries with identical dial codes or North American Numbering Plan (NANP)
-                    if (inputValue.length < MAX_DIAL_CODE_LENGTH) {
-                        // Handle country change with input change & set highest by priority
-                        if (this.state.countryIso2 !== country.iso2 && country.priority === 0) {
-                            this.setValue(country.iso2, inputValue);
-                        }
-                    // Otherwise don't change already selected country, just set value
-                    } else if (this.state.countryIso2 === country.iso2) {
-                        this.setValue(country.iso2, inputValue);
-                    }
-                // Handle all other countries
-                } else {
-                    this.setValue(country.iso2, inputValue);
-                }
-            }
-        });
-    }
-
-    setValue(countryIso2, inputValue) {
-        let resultValue = this.util
-            ? new this.util.asYouType(countryIso2.toUpperCase()).input(inputValue) // eslint-disable-line new-cap
-            : inputValue;
-
-        this.setState({
-            inputValue: resultValue,
-            countryIso2
-        });
-    }
-    //
-    // /**
-    //  * Возвращает ссылку на HTMLElement инпута.
-    //  *
-    //  * @public
-    //  * @returns {HTMLInputElement}
-    //  */
-    // getControl() {
-    //     return this.input.getControl();
-    // }
-    //
-    // /**
-    //  * Устанавливает фокус на поле ввода.
-    //  *
-    //  * @public
-    //  */
-    // focus() {
-    //     this.input.focus();
-    // }
-    //
-    // /**
-    //  * Убирает фокус с поля ввода.
-    //  *
-    //  * @public
-    //  */
-    // blur() {
-    //     this.input.blur();
-    // }
-    //
-    // /**
-    //  * Скроллит страницу до поля ввода.
-    //  *
-    //  * @public
-    //  */
-    // scrollTo() {
-    //     this.input.scrollTo();
-    // }
 }
 
 export default IntlPhoneInput;
