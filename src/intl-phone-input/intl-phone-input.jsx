@@ -4,25 +4,16 @@
 
 import React from 'react';
 
-import Input from '../input/input';
-import Select from '../select/select';
-
 import cn from '../cn';
 import performance from '../performance';
-
-const MAX_DIAL_CODE_LENGTH = 4;
 
 /**
  * Компонент ввода международного телефона по маске.
  *
  */
-@cn('intl-phone-input', Input, Select)
+@cn('intl-phone-input')
 @performance()
 class IntlPhoneInput extends React.Component {
-    static propTypes = {
-        ...Input.propTypes
-    };
-
     static defaultProps = {
         size: 'm',
         value: '+7'
@@ -31,7 +22,6 @@ class IntlPhoneInput extends React.Component {
     state = {
         countryIso2: 'ru',
         inputFocused: false,
-        inputValue: this.props.value,
         selectFocused: false,
         onceOpened: false
     }
@@ -42,27 +32,9 @@ class IntlPhoneInput extends React.Component {
     timeoutId;
     util;
 
-    render(cn, Input, Select) {
+    render(cn) {
         return (
-            <div className={ cn() }>
-                <Input
-                    className={ cn('input') }
-                    ref={ (input) => { this.input = input; } }
-                    { ...this.props }
-                    focused={ this.state.inputFocused || this.state.selectFocused }
-                    leftAddons={
-                        <Select
-                            className={ cn('select') }
-                            ref={ (select) => { this.select = select; } }
-                            disabled={ this.props.disabled }
-                            mode='radio'
-                            size={ this.props.size }
-                        />
-                    }
-                    noValidate={ true }
-                    type='tel'
-                />
-            </div>
+            <div className={ cn() } />
         );
     }
 
