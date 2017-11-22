@@ -5,7 +5,7 @@
 import { autobind } from 'core-decorators';
 import React from 'react';
 
-import FlagIcon from '../flag-icon/flag-icon';
+// import FlagIcon from '../flag-icon/flag-icon';
 import Input from '../input/input';
 import Select from '../select/select';
 
@@ -102,19 +102,20 @@ class IntlPhoneInput extends React.Component {
         );
     }
 
-    renderFlagIcon(countryIso2) {
-        return (
-            <FlagIcon
-                country={ countryIso2 }
-                mode={ this.state.onceOpened ? 'sprite' : 'chunk' }
-                size={ this.props.size }
-            />
-        );
-    }
+    // renderFlagIcon(countryIso2) {
+    //     return (
+    //         <FlagIcon
+    //             country={ countryIso2 }
+    //             mode={ this.state.onceOpened ? 'sprite' : 'chunk' }
+    //             size={ this.props.size }
+    //         />
+    //     );
+    // }
 
     @autobind
     renderSelectButtonContent() {
-        return this.renderFlagIcon(this.state.countryIso2);
+        return 'foo';
+        // return this.renderFlagIcon(this.state.countryIso2);
     }
 
     @autobind
