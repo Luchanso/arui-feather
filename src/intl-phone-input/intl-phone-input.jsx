@@ -17,10 +17,6 @@ import performance from '../performance';
 @cn('intl-phone-input', Input, Select)
 @performance()
 class IntlPhoneInput extends React.Component {
-    static propTypes = {
-        ...Input.propTypes
-    };
-
     static defaultProps = {
         size: 'm',
         value: '+7'
@@ -43,15 +39,12 @@ class IntlPhoneInput extends React.Component {
                 <Input
                     className={ cn('input') }
                     ref={ (input) => { this.input = input; } }
-                    { ...this.props }
                     focused={ this.state.inputFocused || this.state.selectFocused }
                     leftAddons={
                         <Select
                             className={ cn('select') }
                             ref={ (select) => { this.select = select; } }
-                            disabled={ this.props.disabled }
                             mode='radio'
-                            size={ this.props.size }
                         />
                     }
                     noValidate={ true }
