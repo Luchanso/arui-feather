@@ -47,24 +47,24 @@ class IntlPhoneInput extends React.Component {
     timeoutId;
     util;
 
-    componentDidMount() {
-        this.loadUtil();
-        this.setCountry();
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        if (this.state.inputValue !== nextState.inputValue) {
-            if (this.props.onChange) {
-                this.props.onChange(nextState.inputValue);
-            }
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.timeoutId) {
-            clearTimeout(this.timeoutId);
-        }
-    }
+    // componentDidMount() {
+    //     this.loadUtil();
+    //     this.setCountry();
+    // }
+    //
+    // componentWillUpdate(nextProps, nextState) {
+    //     if (this.state.inputValue !== nextState.inputValue) {
+    //         if (this.props.onChange) {
+    //             this.props.onChange(nextState.inputValue);
+    //         }
+    //     }
+    // }
+    //
+    // componentWillUnmount() {
+    //     if (this.timeoutId) {
+    //         clearTimeout(this.timeoutId);
+    //     }
+    // }
 
     render(cn, Input, Select) {
         return (

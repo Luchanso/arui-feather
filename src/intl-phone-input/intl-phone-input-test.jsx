@@ -7,7 +7,7 @@
 // import bowser from 'bowser';
 import { render, cleanUp, simulate } from '../test-utils';
 
-// import IntlPhoneInput from './intl-phone-input';
+import IntlPhoneInput from './intl-phone-input';
 // import { SCROLL_TO_CORRECTION } from '../vars';
 
 // const SIZES = ['s', 'm', 'l', 'xl'];
@@ -24,10 +24,10 @@ describe('intl-phone-input', () => {
         window.scrollTo = originalWindowScrollTo;
     });
 
-    // it('renders without problems', () => {
-    //     let intlPhoneInput = render(<IntlPhoneInput />);
-    //     expect(intlPhoneInput.node).to.exist;
-    // });
+    it('renders without problems', () => {
+        let intlPhoneInput = render(<IntlPhoneInput />);
+        expect(intlPhoneInput.node).to.exist;
+    });
 
     // it('renders without problems in all sizes', () => {
     //     SIZES.forEach((size) => {
