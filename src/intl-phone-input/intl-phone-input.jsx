@@ -135,18 +135,18 @@ class IntlPhoneInput extends React.Component {
 
     @autobind
     handleSelectChange(value) {
-        let inputValue = `+${this.countries.find(country => country.iso2 === value[0]).dialCode}`;
-
-        this.setState({
-            countryIso2: value[0],
-            inputValue
-        }, () => {
-            // Wait for select blur, then focus on input
-            this.timeoutId = setTimeout(() => {
-                this.input.focus();
-                this.input.setSelectionRange(inputValue.length);
-            }, 0);
-        });
+        // let inputValue = `+${this.countries.find(country => country.iso2 === value[0]).dialCode}`;
+        //
+        // this.setState({
+        //     countryIso2: value[0],
+        //     inputValue
+        // }, () => {
+        //     // Wait for select blur, then focus on input
+        //     this.timeoutId = setTimeout(() => {
+        //         this.input.focus();
+        //         this.input.setSelectionRange(inputValue.length);
+        //     }, 0);
+        // });
     }
 
     @autobind
