@@ -49,7 +49,7 @@ class IntlPhoneInput extends React.Component {
 
     componentDidMount() {
         // this.loadUtil();
-        this.setCountry();
+        // this.setCountry();
     }
 
     componentWillUpdate(nextProps, nextState) {
