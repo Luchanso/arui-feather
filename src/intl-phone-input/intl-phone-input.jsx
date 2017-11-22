@@ -27,12 +27,6 @@ class IntlPhoneInput extends React.Component {
             </div>
         );
     }
-
-    loadUtil() {
-        return import(/* webpackChunkName: "libphonenumber" */ 'libphonenumber-js/bundle/libphonenumber-js.min')
-            .then((util) => { this.util = util; })
-            .catch(error => `An error occurred while loading libphonenumber-js:\n${error}`);
-    }
 }
 
 export default IntlPhoneInput;
