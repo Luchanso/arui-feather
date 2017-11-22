@@ -34,19 +34,20 @@ class IntlPhoneInput extends React.Component {
     util;
 
     render(cn) {
+        const options = [
+            { value: '01', text: 'ИП Фридман М.М.' },
+            { value: '02', text: 'ООО «Виктори»' },
+            { value: '03', text: 'ФГУП НПП ВНИИЭМ' }
+        ];
+
         return (
             <div className={ cn() }>
                 <Input
                     className={ cn('input') }
-                    ref={ (input) => { this.input = input; } }
-                    focused={ this.state.inputFocused || this.state.selectFocused }
-                    noValidate={ true }
-                    type='tel'
                 />
                 <Select
                     className={ cn('select') }
-                    ref={ (select) => { this.select = select; } }
-                    mode='radio'
+                    options={ options }
                 />
             </div>
         );
