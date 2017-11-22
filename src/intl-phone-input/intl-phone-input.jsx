@@ -14,7 +14,7 @@ import performance from '../performance';
  * Компонент ввода международного телефона по маске.
  *
  */
-@cn('intl-phone-input', Input, Select)
+@cn('intl-phone-input')
 @performance()
 class IntlPhoneInput extends React.Component {
     static defaultProps = {
@@ -33,7 +33,7 @@ class IntlPhoneInput extends React.Component {
     select;
     util;
 
-    render(cn, Input, Select) {
+    render(cn) {
         return (
             <div className={ cn() }>
                 <Input
